@@ -1,0 +1,43 @@
+<script>
+//TASK 1
+    
+function extractReviews(reviewData) {
+ var reviews = reviewsData.data.map(function(reviewData){
+   return {
+     id: reviewData.id,
+     title: reviewData['review-title'],
+     stars: reviewData.attributes.stars,
+     cost: reviewData.attributes.cost,
+     
+   };
+ }); 
+  return reviews
+}
+console.log(extractReviews(reviewsData));
+
+//TASK 2
+
+function findGoodReviews(reviews) {
+  
+  var goodreviews = reviews.filter(function(reviews) {
+ return reviews.title.toLowerCase().indexOf('good') > -1
+});  
+  return goodreviews
+}
+
+console.log(findGoodReviews(reviews));
+    
+//TASK 3
+
+var classifyReviewsByCost = reviews.reduce(function(bruh, review){
+    if(bruh[review.cost]){
+            bruh[review.cost] = bruh[review.cost] + 1;
+    }
+    else{
+        bruh[review.cost] = 1;
+    }
+return bruh;
+},{});
+console.log(classifyReviewsByCost);
+    
+</script>
